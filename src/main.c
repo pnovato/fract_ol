@@ -1,17 +1,19 @@
-#include "../include/fractol.h"
+#include "../include/fract_ol.h"
 
-static void print_help(void)
+static void	print_help(void)
 {
 	ft_printf("Usage:\n");
-	ft_printf("  ./fractol mandelbrot\n");
-	ft_printf("  ./fractol julia <real> <imag>\n");
+	ft_printf("  ./fract_ol mandelbrot\n");
+	ft_printf("  ./fract_ol julia <real> <imag>\n");
 	exit(1);
 }
 
 int	main(int argc, char **argv)
 {
+	t_vars	vars;
 	if (argc < 2)
 		print_help();
+	init_window(&vars);
 	if (!ft_strncmp(argv[1], "mandelbrot", 11))
 		ft_printf("Renderizando Mandelbrot...\n");
 	else if (!ft_strncmp(argv[1], "julia", 6))
@@ -22,6 +24,7 @@ int	main(int argc, char **argv)
 	}
 	else
 		print_help();
+	mlx_loop(vars.mlx_ptr);
 	return (0);
 }
 
