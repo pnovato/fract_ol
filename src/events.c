@@ -41,3 +41,26 @@ int	handle_mouse(int button, int x, int y, t_vars *vars)
 	return (0);
 }
 
+int	zoom_loop(t_vars *vars)
+{
+	if (vars->zoom_in)
+		apply_zoom(vars, 0.95, WIDTH / 2, HEIGHT / 2);
+	if (vars->zoom_out)
+		apply_zoom(vars, 1.05, WIDTH / 2, HEIGHT / 2);
+	return (0);
+}
+
+void	move_view(t_vars *vars, double dx, double dy)
+{
+	double	range_re;
+	double	range_im;
+
+	range_re = vars->max_re - vars->min_re;
+	range_im = vars->max_im - vars->min_im;
+	vars->min_re += dx * range_re;
+	vars->max_re += dx * range_re;
+	vars->min_im += dy * range_im;
+	vars->max_im += dy * range_im;
+	draw_mandelbrot(vars);
+}
+

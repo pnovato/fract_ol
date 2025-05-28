@@ -53,8 +53,10 @@ void	init_window(t_vars *vars)
 	vars->img_addr = mlx_get_data_addr(
 			vars->img_ptr, &vars->bpp, &vars->line_len, &vars->endian);
 	init_fractal_limits(vars);
-//	mlx_hook(vars->win_ptr, 17, 0, close_window, vars);
-//	mlx_hook(vars->win_ptr, 4, 0, handle_mouse, vars);
-//	mlx_loop_hook(vars->mlx_ptr, test_loop_hook, vars);
-	mlx_key_hook(vars->win_ptr, handle_key, vars);
+	mlx_hook(vars->win_ptr, 2, 1L << 0, key_press, vars);
+	mlx_hook(vars->win_ptr, 3, 1L << 1, key_release, vars);
+	mlx_loop_hook(vars->mlx_ptr, zoom_loop, vars);
+	vars->zoom_in = 0;
+	vars->zoom_out = 0;
+//	mlx_key_hook(vars->win_ptr, handle_key, vars);
 }

@@ -13,7 +13,8 @@ SRC = \
 	$(SRC_DIR)/init_mlx.c \
 	$(SRC_DIR)/events.c \
 	$(SRC_DIR)/mandelbrot.c \
-	$(SRC_DIR)/draw_utils.c
+	$(SRC_DIR)/draw_utils.c \
+	$(SRC_DIR)/keys.c
 
 OBJ = $(SRC:.c=.o)
 

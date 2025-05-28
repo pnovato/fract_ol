@@ -20,6 +20,8 @@ typedef struct s_vars
 	int		bpp;
 	int		line_len;
 	int		endian;
+	int		zoom_in;
+	int		zoom_out;
 
 	double	min_re;
 	double	max_re;
@@ -36,6 +38,8 @@ void	close_window(t_vars *vars);
 int		handle_mouse(int button, int x, int y, t_vars *vars);
 int	test_loop_hook(t_vars *vars);
 void	apply_zoom(t_vars *vars, double zoom, int x, int y);
+int	zoom_loop(t_vars *vars);
+void	move_view(t_vars *vars, double dx, double dy);
 
 // mandelbrot.c
 void	draw_mandelbrot(t_vars *vars);
@@ -44,6 +48,8 @@ void	draw_mandelbrot(t_vars *vars);
 void	put_pixel(t_vars *vars, int x, int y, int color);
 int		choose_color(int iter);
 
-
+//keys.c
+int		key_press(int keycode, t_vars *vars);
+int		key_release(int keycode, t_vars *vars);
 #endif
 
