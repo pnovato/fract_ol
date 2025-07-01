@@ -14,7 +14,8 @@ SRC = \
 	$(SRC_DIR)/events.c \
 	$(SRC_DIR)/mandelbrot.c \
 	$(SRC_DIR)/draw_utils.c \
-	$(SRC_DIR)/keys.c
+	$(SRC_DIR)/julia.c \
+	$(SRC_DIR)/keys.c 
 
 OBJ = $(SRC:.c=.o)
 

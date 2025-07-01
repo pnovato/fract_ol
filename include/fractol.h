@@ -22,11 +22,15 @@ typedef struct s_vars
 	int		endian;
 	int		zoom_in;
 	int		zoom_out;
+	int		fractal_type;
+	int		max_iter;
 
 	double	min_re;
 	double	max_re;
 	double	min_im;
 	double	max_im;
+	double	c_re;
+	double	c_im;
 }	t_vars;
 
 
@@ -47,9 +51,13 @@ void	draw_mandelbrot(t_vars *vars);
 // draw_utils.c
 void	put_pixel(t_vars *vars, int x, int y, int color);
 int		choose_color(int iter);
+void	put_color(t_vars *vars, int x, int y, int iter);
 
 //keys.c
 int		key_press(int keycode, t_vars *vars);
 int		key_release(int keycode, t_vars *vars);
 #endif
+
+//julia.c
+void	draw_julia(t_vars *vars);
 

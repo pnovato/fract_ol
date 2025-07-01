@@ -23,3 +23,25 @@ int	choose_color(int iter)
 	return (color);
 }
 
+void    put_color(t_vars *vars, int x, int y, int iter)
+{
+    int red, green, blue;
+    int color;
+    int offset;
+
+    if (iter == vars->max_iter)
+        color = 0x000000;
+    else
+    {
+        red = (iter * 5) % 256;
+        green = (iter * 3) % 256;
+        blue = (iter * 9) % 256;
+        color = (red << 16) | (green << 8) | blue;
+    }
+    offset = (y * vars->line_len) + (x * (vars->bpp / 8));
+    vars->img_addr[offset] = color & 0xFF;
+    vars->img_addr[offset + 1] = (color >> 8) & 0xFF;
+    vars->img_addr[offset + 2] = (color >> 16) & 0xFF;
+}
+
+
